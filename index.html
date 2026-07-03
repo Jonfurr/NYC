@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC — July 18–23, 2026 — Final Itinerary</title>
+<style>
+  :root{
+    --ink:#111111;
+    --paper:#ffffff;
+    --gray:#6b6b6b;
+    --rule:#e2e2e2;
+    --d1:#0039A6; /* A/C/E blue  */
+    --d2:#EE352E; /* 1/2/3 red   */
+    --d3:#00933C; /* 4/5/6 green */
+    --d4:#FF6319; /* B/D/F/M orange */
+    --d5:#B933AD; /* 7 purple    */
+    --d6:#FCCC0A; /* N/Q/R yellow */
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    padding:0 0 80px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px;}
+
+  /* Header — MTA station signage */
+  .signboard{
+    background:var(--ink);
+    color:#fff;
+    padding:44px 0 36px;
+    margin-bottom:8px;
+  }
+  .signboard .wrap{border-left:6px solid #fff;padding-left:28px;}
+  .signboard h1{
+    font-size:clamp(30px,5vw,52px);
+    font-weight:700;
+    letter-spacing:-0.5px;
+    line-height:1.05;
+  }
+  .signboard .sub{
+    margin-top:12px;
+    font-size:15px;
+    color:#cfcfcf;
+    font-weight:400;
+  }
+  .signboard .sub strong{color:#fff;font-weight:600;}
+
+  .flightbar{
+    display:flex;flex-wrap:wrap;gap:0;
+    border-bottom:1px solid var(--rule);
+    margin-bottom:48px;
+  }
+  .flightbar .cell{
+    flex:1 1 200px;
+    padding:16px 20px 16px 0;
+    font-size:13px;color:var(--gray);
+  }
+  .flightbar .cell b{display:block;color:var(--ink);font-size:15px;font-weight:600;margin-top:2px;}
+
+  /* Day sections */
+  .day{margin-bottom:56px;}
+  .dayhead{
+    display:flex;align-items:center;gap:16px;
+    padding-bottom:10px;border-bottom:3px solid var(--ink);
+    margin-bottom:4px;
+  }
+  .bullet{
+    width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:700;font-size:22px;flex-shrink:0;
+  }
+  .bullet.dark{color:var(--ink);}
+  .dayhead h2{font-size:22px;font-weight:700;letter-spacing:-0.3px;}
+  .dayhead h2 .dow{color:var(--gray);font-weight:400;margin-right:8px;}
+  .dayhead .date{margin-left:auto;font-size:13px;color:var(--gray);text-align:right;white-space:nowrap;}
+
+  .stops{border-left:3px solid var(--rule);margin-left:21px;padding:18px 0 4px 0;}
+  .stop{
+    display:grid;grid-template-columns:88px 1fr;gap:16px;
+    padding:12px 0 12px 28px;position:relative;
+  }
+  .stop::before{
+    content:"";position:absolute;left:-8px;top:20px;
+    width:13px;height:13px;border-radius:50%;
+    background:#fff;border:3px solid var(--ink);
+  }
+  .stop .t{font-size:13px;font-weight:700;padding-top:2px;white-space:nowrap;}
+  .stop .name{font-size:16px;font-weight:600;}
+  .stop .note{font-size:14px;color:var(--gray);margin-top:3px;}
+  .stop .tip{
+    font-size:13px;margin-top:8px;padding:8px 12px;
+    background:#f5f5f5;border-left:3px solid var(--ink);
+  }
+  .stop .tip b{font-weight:700;}
+  .changed{
+    display:inline-block;font-size:11px;font-weight:700;
+    letter-spacing:0.5px;text-transform:uppercase;
+    background:var(--ink);color:#fff;padding:2px 8px;margin-left:8px;
+    vertical-align:2px;
+  }
+
+  .anchor{
+    display:inline-block;font-size:11px;font-weight:700;
+    letter-spacing:0.5px;text-transform:uppercase;
+    background:var(--d2);color:#fff;padding:2px 8px;margin-left:8px;
+    vertical-align:2px;
+  }
+  .flexnote{
+    font-size:13px;color:var(--gray);
+    padding:6px 0 0;font-style:italic;
+  }
+
+  /* Checklist + tips */
+  .blockhead{
+    background:var(--ink);color:#fff;
+    padding:14px 20px;font-size:17px;font-weight:700;
+    margin:64px 0 0;
+  }
+  .blockbody{border:1px solid var(--rule);border-top:none;padding:20px 24px;}
+  .blockbody ul{list-style:none;}
+  .blockbody li{
+    padding:10px 0 10px 0;border-bottom:1px solid var(--rule);
+    font-size:14px;
+  }
+  .blockbody li:last-child{border-bottom:none;}
+  .blockbody li b{font-weight:700;}
+  .urgent{color:var(--d2);font-weight:700;}
+  .money{font-variant-numeric:tabular-nums;}
+
+  @media (max-width:600px){
+    .stop{grid-template-columns:1fr;gap:2px;}
+    .dayhead .date{display:none;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+
+<header class="signboard">
+  <div class="wrap">
+    <h1>New York City<br>Jul 18 – 23, 2026</h1>
+    <div class="sub"><strong>Cody · Madison · Ben</strong> &nbsp;·&nbsp; DoubleTree by Hilton, 128 W 29th St, Chelsea &nbsp;·&nbsp; Final itinerary</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="flightbar">
+    <div class="cell">Outbound · Sat Jul 18<b>LBB 5:35 AM CT → LGA 4:25 PM ET</b></div>
+    <div class="cell">Return · Thu Jul 23<b>LGA 9:35 AM ET</b></div>
+    <div class="cell">Sunset<b>8:20 PM Sat → 8:16 PM Wed</b></div>
+    <div class="cell">Forecast reality<b>Hot. Plan around 2–5 PM heat.</b></div>
+  </div>
+
+  <!-- DAY 1 -->
+  <section class="day">
+    <div class="dayhead">
+      <div class="bullet" style="background:var(--d1)">1</div>
+      <h2><span class="dow">Sat 7/18</span>Arrival &amp; Lady Liberty from the water</h2>
+    </div>
+    <div class="stops">
+      <div class="stop"><div class="t">4:25 PM</div><div>
+        <div class="name">Land at LaGuardia</div>
+        <div class="note">Bags, then Lyft/taxi to the hotel. Saturday evening traffic into Manhattan: budget 45–60 min. Expect to walk into the DoubleTree around 6:00–6:15 PM.</div>
+      </div></div>
+      <div class="stop"><div class="t">6:15 PM</div><div>
+        <div class="name">Check in, drop bags, reset</div>
+        <div class="note">You'll have been up since 3:30 AM Central. Take 45 minutes.</div>
+      </div></div>
+      <div class="stop"><div class="t">7:00 PM</div><div>
+        <div class="name">Subway to Whitehall Terminal</div>
+        <div class="note">1 train from 28th St to South Ferry, ~25 min. Tap a credit card or phone at the turnstile (OMNY) — no MetroCard needed.</div>
+      </div></div>
+      <div class="stop"><div class="t">7:30 PM</div><div>
+        <div class="name">Staten Island Ferry — sunset round trip</div>
+        <div class="note">Free, no tickets, every 30 min. Ride the right side outbound for the Statue of Liberty; sunset hits ~8:20 PM on the return. About 50 min round trip.</div>
+        <div class="tip"><b>Honest note:</b> this is the one flexible thing all week. If the family is wrecked from the 3:30 AM wake-up, skipping it costs $0 and nothing needs rebooking. But it's sitting on a boat with a breeze — usually the perfect arrival-day activity.</div>
+      </div></div>
+      <div class="stop"><div class="t">9:15 PM</div><div>
+        <div class="name">Casual late dinner near the hotel</div>
+        <div class="note">Keep it easy — pizza, diner, whatever's open in Chelsea/NoMad. Big food days are coming.</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="day">
+    <div class="dayhead">
+      <div class="bullet" style="background:var(--d2)">2</div>
+      <h2><span class="dow">Sun 7/19</span>High Line, 9/11 Memorial &amp; Katz's</h2>
+    </div>
+    <div class="stops">
+      <div class="stop"><div class="t">9:00 AM</div><div>
+        <div class="name">Walk the High Line</div>
+        <div class="note">Enter at 30th St &amp; 10th Ave (10 min from the hotel), walk south to Gansevoort. Do it early — no shade, and it's packed by 11.</div>
+      </div></div>
+      <div class="stop"><div class="t">10:45 AM</div><div>
+        <div class="name">Chelsea Market — early lunch</div>
+        <div class="note">The High Line drops you right at the door. Los Tacos No. 1 is the correct order; the line moves fast before noon.</div>
+      </div></div>
+      <div class="stop"><div class="t">12:30 PM</div><div>
+        <div class="name">Hotel break during peak heat</div>
+        <div class="note">Nap, pool, AC. This block is deliberate — don't fill it.</div>
+      </div></div>
+      <div class="stop"><div class="t">3:00 PM</div><div>
+        <div class="name">9/11 Memorial &amp; Museum <span class="anchor">Anchor</span></div>
+        <div class="note">Timed entry booked at 911memorial.org. The outdoor pools are free; budget 2–2.5 hours for the museum. Emotionally heavy — the rested afternoon slot is intentional.</div>
+      </div></div>
+      <div class="stop"><div class="t">6:30 PM</div><div>
+        <div class="name">Katz's Delicatessen</div>
+        <div class="note">205 E Houston — an easy subway hop from the memorial. Take the ticket they hand you at the door and do not lose it; you pay with it on the way out. Pastrami on rye at the counter, tip the cutter a couple bucks for the sample slice.</div>
+      </div></div>
+      <div class="stop"><div class="t">Evening</div><div>
+        <div class="name">Open — no plans</div>
+        <div class="note">Wander the Lower East Side, get dessert, or head straight back and crash. This block is intentionally empty.</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="day">
+    <div class="dayhead">
+      <div class="bullet" style="background:var(--d3)">3</div>
+      <h2><span class="dow">Mon 7/20</span>Midtown classics, The Modern &amp; MoMA</h2>
+    </div>
+    <div class="stops">
+      <div class="stop"><div class="t">Morning</div><div>
+        <div class="name">Loose block: Ess-a-Bagel → Grand Central → NYPL</div>
+        <div class="note">No timestamps on purpose — all three sit within a few blocks. Suggested flow: Ess-a-Bagel (831 3rd Ave at 51st) whenever you're up, Grand Central for the concourse ceiling and the whispering gallery, then the Rose Main Reading Room at the library with a shaded sit in Bryant Park. Skip any of the three if the morning runs slow — nothing downstream depends on them.</div>
+        <div class="flexnote">Only rule: be walking toward 53rd St by 11:40.</div>
+      </div></div>
+      <div class="stop"><div class="t">12:00 PM</div><div>
+        <div class="name">Lunch — The Modern, at MoMA <span class="anchor">Anchor</span></div>
+        <div class="note">9 W 53rd St, two Michelin stars, dining room overlooking the sculpture garden. Prix fixe lunch, business casual (collared shirt fine, no jacket needed). Budget ~2 hours. This is the Michelin box, checked, at a fraction of a tasting-menu dinner.</div>
+        <div class="tip"><b>Fallback:</b> if the Dining Room has no Monday lunch table left, the Bar Room next door is the same kitchen à la carte — cheaper, no dress code, walk-ins accepted. Less formal, still excellent.</div>
+      </div></div>
+      <div class="stop"><div class="t">2:15 PM</div><div>
+        <div class="name">MoMA</div>
+        <div class="note">Same building — you're already there, which is the whole point of this day. Open Mondays 10:30–5:30. Starry Night is floor 5; go straight up, then work down. Stay until 5:00 or leave at 3:30 — nothing is scheduled after.</div>
+      </div></div>
+      <div class="stop"><div class="t">Evening</div><div>
+        <div class="name">Open — no plans</div>
+        <div class="note">After a two-star lunch, dinner can be a slice, a salad, or nothing. Rest up: tomorrow is the biggest day of the trip.</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- DAY 4 -->
+  <section class="day">
+    <div class="dayhead">
+      <div class="bullet" style="background:var(--d4)">4</div>
+      <h2><span class="dow">Tue 7/21</span>Museum day &amp; Broadway</h2>
+    </div>
+    <div class="stops">
+      <div class="stop"><div class="t">9:30 AM</div><div>
+        <div class="name">The Met</div>
+        <div class="note">Open Tuesdays (closed Wednesdays — that's why today). Arrive at open, hit your must-sees first: Temple of Dendur, Arms &amp; Armor for Ben, European paintings. Hard stop at 12:15 — you cannot "do" the Met and shouldn't try.</div>
+      </div></div>
+      <div class="stop"><div class="t">12:30 PM</div><div>
+        <div class="name">Central Park — shaded lunch &amp; the AMNH vote</div>
+        <div class="note">Grab something near the museum or from a cart, find shade near Turtle Pond. This is where the family decides: Natural History Museum, or a slow park afternoon?</div>
+        <div class="tip"><b>Don't pre-book AMNH.</b> Buy timed tickets on your phone at lunch if the vote is yes — same-day slots are normally available, and it means nobody drags themselves through dinosaur halls out of sunk-cost guilt. If the vote is no, you have a free Central Park afternoon and lose nothing.</div>
+      </div></div>
+      <div class="stop"><div class="t">2:00 PM</div><div>
+        <div class="name">American Museum of Natural History <em>(if the vote was yes)</em></div>
+        <div class="note">Crosstown walk through the park, ~20 min. Blue whale, dinosaur halls, Gilder Center. Two hours max — leave wanting more. Either way, be heading back to the hotel by 4:15.</div>
+      </div></div>
+      <div class="stop"><div class="t">4:15 PM</div><div>
+        <div class="name">Hotel reset</div>
+        <div class="note">Subway back, shower, off your feet before the show.</div>
+      </div></div>
+      <div class="stop"><div class="t">5:30 PM</div><div>
+        <div class="name">Pre-theater dinner, Theater District</div>
+        <div class="note">Tell the host you have a 7:00 curtain — every restaurant in the district knows the drill. Casual on purpose; the fancy meal already happened at Monday lunch.</div>
+      </div></div>
+      <div class="stop"><div class="t">7:00 PM</div><div>
+        <div class="name">The Outsiders — Bernard B. Jacobs Theatre <span class="anchor">Anchor</span></div>
+        <div class="note">2 hr 30 min with intermission, out around 9:30. The 7:00 curtain is the only immovable thing today — everything before it can compress or vanish. Theater AC runs cold — bring a layer.</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- DAY 5 -->
+  <section class="day">
+    <div class="dayhead">
+      <div class="bullet" style="background:var(--d5)">5</div>
+      <h2><span class="dow">Wed 7/22</span>Village folk walk, Holocaust Museum &amp; Brooklyn</h2>
+    </div>
+    <div class="stops">
+      <div class="stop"><div class="t">9:00 AM</div><div>
+        <div class="name">Greenwich Village folk walk — 4 stops, ~45 min</div>
+        <div class="note">① Jones St at 4th St — the Freewheelin' Bob Dylan cover spot. ② Cafe Wha? on MacDougal — where Dylan played his first NYC gig and Van Ronk held court. ③ Caffe Reggio — espresso in the room where the folk crowd argued all night. ④ Washington Square Park — the Sunday folk-circle ground zero.</div>
+      </div></div>
+      <div class="stop"><div class="t">10:15 AM</div><div>
+        <div class="name">Joe's Pizza, Carmine St</div>
+        <div class="note">A slice at 10 AM is a legitimate New York decision. Fold it.</div>
+      </div></div>
+      <div class="stop"><div class="t">11:00 AM</div><div>
+        <div class="name">Museum of Jewish Heritage <span class="anchor">Anchor</span></div>
+        <div class="note">36 Battery Pl. Open Wednesdays 10–5 (closed Mon/Tue/Sat — today is the only day this week it works). ~2 hours for The Holocaust: What Hate Can Do. Airport-style security; pack light.</div>
+      </div></div>
+      <div class="stop"><div class="t">1:15 PM</div><div>
+        <div class="name">To Williamsburg — lunch first</div>
+        <div class="note">Subway (4/5 to 14th, L to Bedford Ave) or the NYC Ferry from Wall St/Pier 11 to North Williamsburg — the ferry is $4.50, air-conditioned, and the better ride.</div>
+      </div></div>
+      <div class="stop"><div class="t">2:30 PM</div><div>
+        <div class="name">Thrifting — flexible block, up to 3 hours</div>
+        <div class="note">Beacon's Closet (Greenpoint flagship or N 11th St), L Train Vintage, Awoke Vintage, Buffalo Exchange. All within a walkable spread off Bedford. Ben sets the pace — this block shrinks to one shop and a coffee if energy is low. Nothing before 6:15 is timed.</div>
+      </div></div>
+      <div class="stop"><div class="t">6:15 PM</div><div>
+        <div class="name">Head to the Brooklyn Bridge</div>
+        <div class="note">From Williamsburg: L to 14th, 4/5 down to Brooklyn Bridge–City Hall, then cross to the Brooklyn side via High St (A/C) — OR simpler: walk on from the Manhattan side at City Hall. Manhattan-side entry means the skyline is behind you, so best move: subway to High St in Brooklyn and walk toward Manhattan.</div>
+      </div></div>
+      <div class="stop"><div class="t">7:30 PM</div><div>
+        <div class="name">Walk the Brooklyn Bridge at sunset <span class="anchor">Anchor</span></div>
+        <div class="note">Brooklyn → Manhattan, ~40 min at stroll pace. Sunset is 8:16 PM on July 22 (verified) — starting at 7:30 puts you mid-span around 7:55 in golden light, stepping off right at sundown. Stay in the pedestrian lane.</div>
+      </div></div>
+      <div class="stop"><div class="t">8:45 PM</div><div>
+        <div class="name">Casual dinner, then pack tonight</div>
+        <div class="note">Chinatown is right off the bridge exit if you want one last food stop. Pack before bed — tomorrow morning is tight.</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- DAY 6 -->
+  <section class="day">
+    <div class="dayhead">
+      <div class="bullet dark" style="background:var(--d6)">6</div>
+      <h2><span class="dow">Thu 7/23</span>Departure</h2>
+    </div>
+    <div class="stops">
+      <div class="stop"><div class="t">6:30 AM</div><div>
+        <div class="name">Coffee to go</div>
+        <div class="note">Nothing sit-down. There's food past security at LGA Terminal B if anyone's hungry.</div>
+      </div></div>
+      <div class="stop"><div class="t">7:00 AM</div><div>
+        <div class="name">Depart hotel for LGA</div>
+        <div class="note">Pre-book the ride the night before. 30–40 min at that hour puts you at the terminal by ~7:45.</div>
+        <div class="tip"><b>Why earlier than the old 7:30:</b> a 9:35 AM Thursday flight means boarding ~9:00. Leaving at 7:30 left a 50-minute buffer at LGA with zero slack for a slow security line or traffic on the BQE. The extra 30 minutes is cheap insurance; worst case you drink coffee at the gate.</div>
+      </div></div>
+      <div class="stop"><div class="t">9:35 AM</div><div>
+        <div class="name">Wheels up — LGA → LBB</div>
+        <div class="note">Home to Lubbock.</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- BOOKING CHECKLIST -->
+  <div class="blockhead">Book now — 15 days out</div>
+  <div class="blockbody">
+    <ul>
+      <li><span class="urgent">① The Outsiders — today.</span> Telecharge.com or TodayTix, Tuesday July 21, 7:00 PM, Bernard B. Jacobs Theatre. Tuesday availability is the best of the week but mid-July is peak season. Rush/lottery backup: $45 rush at the box office day-of, $49 digital lottery at rush.telecharge.com.</li>
+      <li><span class="urgent">② The Modern (Dining Room) — today.</span> Resy, Monday July 20, 12:00 PM, party of 3. Reservations open 28 days out, so your date is already bookable — Dining Room lunch tables go faster than the Bar Room. Fallback if it's full: Bar Room reservation or walk-in, same kitchen à la carte.</li>
+      <li><b>③ 9/11 Memorial Museum</b> — timed entry at 911memorial.org, Sunday July 19, 3:00 PM slot.</li>
+      <li><b>④ The Met</b> — buy admission online (metmuseum.org) to skip the ticket line; no timed slot needed.</li>
+      <li><b>⑤ MoMA</b> — timed tickets at moma.org, Monday July 20, ~2:15 PM (after lunch).</li>
+      <li><b>⑥ Museum of Jewish Heritage</b> — advance tickets at mjhnyc.org, Wednesday July 22, 11:00 AM.</li>
+      <li><b>⑦ AMNH — deliberately NOT pre-booked.</b> Decide at Central Park lunch Tuesday; buy same-day timed tickets on your phone if it's a yes.</li>
+      <li><b>⑧ Airport ride home</b> — schedule Wednesday night for a 7:00 AM Thursday pickup.</li>
+    </ul>
+  </div>
+
+  <!-- BUDGET -->
+  <div class="blockhead">Budget — updated</div>
+  <div class="blockbody">
+    <ul>
+      <li><b>bōm is out</b> — that removes what had become a <span class="money">$1,200–$1,400</span> night at current prepaid pricing.</li>
+      <li><b>The Modern lunch replaces it</b> — Dining Room prix fixe for three should land in the low-to-mid hundreds with drinks; check the current menu on their site before booking so there's no sticker surprise. Roughly a quarter to a third of the bōm night.</li>
+      <li><b>Revised range:</b> roughly <span class="money">$1,900–$2,900</span> for three, excluding flights and hotel — below the original <span class="money">$2,230–$3,390</span> estimate. Remaining levers: Broadway rush/lottery saves <span class="money">$150–$200</span>; skipping AMNH saves ~<span class="money">$90</span>.</li>
+    </ul>
+  </div>
+
+  <!-- LOCALS TIPS -->
+  <div class="blockhead">Locals-only tips</div>
+  <div class="blockbody">
+    <ul>
+      <li><b>Subway:</b> tap credit card or phone at every turnstile (OMNY). Fares cap automatically at the weekly max — no math required. Stand clear of the doors, let people off first, backpack in front on crowded cars.</li>
+      <li><b>Heat strategy:</b> the 2–5 PM block is brutal in July. Every day above has either AC (museum) or hotel rest in that window — that's not padding, it's the plan.</li>
+      <li><b>Walking:</b> keep right, don't stop mid-sidewalk, cross when the locals cross. Ben will have this down by Day 2.</li>
+      <li><b>Food rules:</b> fold the pizza slice. Bagels don't get toasted if they're fresh. Don't order pastrami anywhere but Katz's this week.</li>
+      <li><b>Tipping:</b> 20% at sit-down, $1–2/drink at bars, a couple bucks to the Katz's cutter.</li>
+      <li><b>Broadway hacks:</b> TodayTix lottery the night before, TKTS booth in Times Square for day-of discounts, $45 rush at the Jacobs box office at 10 AM.</li>
+      <li><b>Trash piles:</b> giant sidewalk trash piles at night are normal. Walk around them.</li>
+      <li><b>Theater AC:</b> Broadway houses run cold. Everyone brings a layer Tuesday.</li>
+    </ul>
+  </div>
+</div><!-- /wrap -->
+</body>
+</html>
