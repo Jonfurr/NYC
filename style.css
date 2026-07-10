@@ -1,0 +1,86 @@
+:root{
+  --d1:#EE352E; --d2:#00933C; --d3:#FF6319; --d4:#0039A6; --d5:#B933AD; --d6:#FCCC0A;
+  --ink:#111; --paper:#fff; --rule:#d8d8d8; --soft:#f4f4f4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.45}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+
+/* Signboard header */
+.signboard{background:#000;color:#fff;padding:30px 0 20px;border-bottom:10px solid;
+  border-image:linear-gradient(90deg,var(--d1) 0 16.6%,var(--d2) 0 33.3%,var(--d3) 0 50%,var(--d4) 0 66.6%,var(--d5) 0 83.3%,var(--d6) 0 100%) 1}
+.signboard .kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#bbb;display:flex;align-items:center;gap:12px}
+.signboard .kicker .num{width:30px;height:30px;border-radius:50%;color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.signboard h1{font-size:30px;font-weight:700;letter-spacing:.3px;line-height:1.15;margin-top:12px}
+.signboard .sub{margin-top:10px;font-size:13px;color:#ddd}
+.signboard .stepchip{display:inline-block;margin-top:12px;background:#fff;color:#000;font-size:12px;font-weight:700;padding:4px 10px;border-radius:3px;letter-spacing:.5px}
+
+/* Snapshot bar */
+.snapshot{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);margin:22px 0 6px}
+.snapshot .cell{padding:10px 12px;font-size:11px;color:#666;border-right:1px solid var(--rule);text-transform:uppercase;letter-spacing:.5px}
+.snapshot .cell:last-child{border-right:none}
+.snapshot .cell b{display:block;color:var(--ink);font-size:14px;margin-top:3px;text-transform:none;letter-spacing:0}
+@media(max-width:640px){.snapshot{grid-template-columns:1fr 1fr}.snapshot .cell{border-bottom:1px solid var(--rule)}}
+
+/* Stops */
+.stops{margin-top:20px}
+.stop{display:grid;grid-template-columns:78px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.stop:last-child{border-bottom:none}
+.stop .t{font-size:13px;font-weight:700;padding-top:2px;color:#333}
+.name{font-size:17px;font-weight:700}
+.note{font-size:14px;color:#333;margin-top:5px}
+.anchor{display:inline-block;background:#000;color:#fff;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:2px}
+
+/* Transit strip */
+.transit{background:var(--soft);border-left:4px solid #000;font-size:13px;color:#333;padding:8px 11px;margin-top:9px}
+.transit b{font-weight:700}
+.rb{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;color:#fff;font-size:11.5px;font-weight:700;vertical-align:-4px;margin:0 1px}
+.rb.r1,.rb.r2,.rb.r3{background:#EE352E}
+.rb.r4,.rb.r5,.rb.r6{background:#00933C}
+.rb.rA,.rb.rC,.rb.rE{background:#0039A6}
+.rb.rB,.rb.rD,.rb.rF,.rb.rM{background:#FF6319}
+.rb.rN,.rb.rQ,.rb.rR,.rb.rW{background:#FCCC0A;color:#111}
+.rb.rL{background:#A7A9AC}
+.rb.rJ,.rb.rZ{background:#996633}
+.rb.rS{background:#808183}
+.chip{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.5px;padding:2px 7px;border-radius:3px;vertical-align:-1px;margin-right:2px}
+.chip.walk{background:#e2e2e2;color:#111}
+.chip.taxi{background:#f7b500;color:#111}
+.chip.ferry{background:#1b9bb0;color:#fff}
+.chip.fly{background:#333;color:#fff}
+.chip.subway{background:#000;color:#fff}
+
+/* Tips + flex */
+.tip{background:#fdf6d8;border-left:4px solid #e5c02a;font-size:13px;color:#4a4a4a;padding:9px 11px;margin-top:9px}
+.flexnote{font-size:13px;font-style:italic;color:#666;margin-top:7px}
+
+/* Map embeds */
+.map{margin-top:12px;border:1px solid var(--rule)}
+.map iframe{display:block;width:100%;height:300px;border:0}
+.map .cap{font-size:11px;color:#888;padding:6px 10px;background:var(--soft);text-transform:uppercase;letter-spacing:.5px}
+
+/* Options grids (transport / food) */
+.blockhead{background:#000;color:#fff;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:9px 14px;margin-top:34px}
+.blockbody{border:1px solid var(--rule);border-top:none;padding:6px 0}
+.opt{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:12px 16px;border-bottom:1px solid var(--rule)}
+.opt:last-child{border-bottom:none}
+.opt .lab{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#333;padding-top:2px}
+.opt .body{font-size:13.5px;color:#333}
+.opt .body .meta{font-size:12px;color:#777;margin-top:3px}
+.opt .body a{color:#0039A6}
+
+/* Food cards */
+.food{display:grid;grid-template-columns:1fr;gap:0}
+.food .item{padding:12px 16px;border-bottom:1px solid var(--rule)}
+.food .item:last-child{border-bottom:none}
+.food .item .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.food .item .nm{font-size:15px;font-weight:700}
+.food .item .price{font-size:12px;color:#00933C;font-weight:700;white-space:nowrap}
+.food .item .desc{font-size:13px;color:#444;margin-top:4px}
+.food .item .addr{font-size:12px;color:#888;margin-top:3px}
+
+/* Nav placeholder */
+.navnote{background:#000;color:#fff;text-align:center;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:8px}
+
+footer{margin:30px 0;font-size:11.5px;color:#888;text-align:center;border-top:1px solid var(--rule);padding-top:16px}
+@media print{.signboard{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
