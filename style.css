@@ -84,3 +84,44 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--pa
 
 footer{margin:30px 0;font-size:11.5px;color:#888;text-align:center;border-top:1px solid var(--rule);padding-top:16px}
 @media print{.signboard{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* ============ INDEX / OVERVIEW PAGE ============ */
+/* Sticky day nav */
+.daynav{position:sticky;top:0;z-index:50;background:#000;border-bottom:4px solid;
+  border-image:linear-gradient(90deg,var(--d1) 0 16.6%,var(--d2) 0 33.3%,var(--d3) 0 50%,var(--d4) 0 66.6%,var(--d5) 0 83.3%,var(--d6) 0 100%) 1}
+.daynav .inner{max-width:900px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
+.daynav a{flex:1;min-width:64px;text-align:center;text-decoration:none;color:#fff;padding:11px 6px;
+  font-size:11px;letter-spacing:.5px;text-transform:uppercase;border-right:1px solid #222;transition:background .15s}
+.daynav a:last-child{border-right:none}
+.daynav a:hover,.daynav a:focus{background:#1a1a1a}
+.daynav a .n{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;
+  color:#fff;font-size:14px;font-weight:700;margin:0 auto 4px}
+.daynav a .dw{display:block;font-weight:700;font-size:12px}
+.daynav a .dt{display:block;color:#999;font-size:10px;margin-top:1px}
+
+/* Overview intro */
+.intro{padding:30px 0 6px}
+.intro h1{font-size:30px;font-weight:700;line-height:1.12}
+.intro .lede{font-size:15px;color:#444;margin-top:10px;max-width:64ch}
+.tripfacts{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);margin:22px 0 6px}
+.tripfacts .cell{padding:12px;font-size:11px;color:#666;border-right:1px solid var(--rule);text-transform:uppercase;letter-spacing:.5px}
+.tripfacts .cell:last-child{border-right:none}
+.tripfacts .cell b{display:block;color:var(--ink);font-size:15px;margin-top:3px;text-transform:none;letter-spacing:0}
+@media(max-width:640px){.tripfacts{grid-template-columns:1fr 1fr}.tripfacts .cell{border-bottom:1px solid var(--rule)}}
+
+/* Day overview cards */
+.daycard{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);margin-top:16px;transition:box-shadow .15s,transform .15s}
+.daycard:hover,.daycard:focus{box-shadow:0 4px 18px rgba(0,0,0,.12);transform:translateY(-2px)}
+.daycard .cardhead{display:flex;align-items:center;gap:14px;padding:14px 18px;color:#fff}
+.daycard .cardhead .bul{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.22);
+  display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;flex:none}
+.daycard .cardhead .ht{flex:1}
+.daycard .cardhead .dow{display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;opacity:.85}
+.daycard .cardhead h2{font-size:18px;font-weight:700;margin-top:2px}
+.daycard .cardhead .go{font-size:22px;font-weight:700;opacity:.8}
+.daycard .cardbody{padding:14px 18px 16px;background:#fff}
+.daycard .cardbody .beats{font-size:13.5px;color:#333;line-height:1.5}
+.daycard .cardbody .beats b{color:#000}
+.daycard .cardmeta{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;padding-top:11px;border-top:1px solid var(--rule);font-size:12px;color:#666}
+.daycard .cardmeta .m b{color:#000;font-weight:700}
+.daycard .cardmeta .anchor-tag{font-weight:700;color:#000}
