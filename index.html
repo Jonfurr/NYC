@@ -40,6 +40,14 @@
   .dayhead h2{font-size:20px;font-weight:700}
   .dayhead .dow{display:block;font-size:12px;font-weight:400;color:#666;text-transform:uppercase;letter-spacing:1px}
 
+  /* Accordion behavior */
+  .dayhead{cursor:pointer;user-select:none}
+  .dayhead .chev{margin-left:auto;font-size:18px;color:#666;transition:transform .25s ease;flex:none}
+  .day.open .chev{transform:rotate(180deg)}
+  .day .stops{display:none}
+  .day.open .stops{display:block}
+  @media print{.day .stops{display:block !important}.dayhead .chev{display:none}}
+
   .stops{margin-top:6px}
   .stop{display:grid;grid-template-columns:86px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule)}
   .stop:last-child{border-bottom:none}
@@ -396,7 +404,34 @@
       <li><b>Bushwick murals:</b> totally safe and busy with photo-walkers by late morning; it's a working neighborhood, not a tourist zone — which is the appeal.</li>
     </ul>
   </div>
+
+  <footer>v4 · updated Jul 16, 2026 · full rebuild · World Cup Final at AMNH · Katz's cut · car service both airport legs · Wed &amp; Thu unchanged</footer>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var days = document.querySelectorAll('.day');
+  days.forEach(function (day, i) {
+    var head = day.querySelector('.dayhead');
+    if (!head) return;
+    var chev = document.createElement('span');
+    chev.className = 'chev';
+    chev.textContent = '\u25BE';
+    head.appendChild(chev);
+    head.setAttribute('role', 'button');
+    head.setAttribute('tabindex', '0');
+    if (i === 0) day.classList.add('open');
+    head.setAttribute('aria-expanded', i === 0 ? 'true' : 'false');
+    function toggle() {
+      var open = day.classList.toggle('open');
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    head.addEventListener('click', toggle);
+    head.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+});
+</script>
 </body>
 </html>
